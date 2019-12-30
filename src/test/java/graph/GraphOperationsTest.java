@@ -43,8 +43,6 @@ class GraphOperationsTest {
   @Test
   void addEdge() {
     Graph<String> g = getGraph();
-    System.out.println(g.toString());
-
     assertEquals(5, g.getVertexCount());
     assertEquals(8, g.getEdgeCount());
   }
