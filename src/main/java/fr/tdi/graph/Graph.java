@@ -137,12 +137,19 @@ public class Graph<T> {
       addVertex(vertexB);
     }
 
-    adjacentMap.get(vertexA).add(new Pair<T, Float>(vertexB, weight));
-    edgeCount++;
-
-    if (graphType == GraphType.Undirected) {
-      adjacentMap.get(vertexB).add(new Pair<T, Float>(vertexA, weight));
+    if (!adjacentMap
+        .get(vertexA)
+        .stream()
+        .filter(e -> e.first == vertexB)
+        .findFirst()
+        .isPresent()) {
+      adjacentMap.get(vertexA).add(new Pair<T, Float>(vertexB, weight));
       edgeCount++;
+
+      if (graphType == GraphType.Undirected) {
+        adjacentMap.get(vertexB).add(new Pair<T, Float>(vertexA, weight));
+        edgeCount++;
+      }
     }
   }
 

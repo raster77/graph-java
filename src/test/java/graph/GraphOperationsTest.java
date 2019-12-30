@@ -19,7 +19,7 @@ class GraphOperationsTest {
   }
 
   @Test
-  void clear() {
+  void graphShouldBeEmpty() {
     Graph<String> g = new Graph<String>(GraphType.Directed);
     g.addEdge("A", "B");
     g.addEdge("A", "D");
@@ -31,7 +31,7 @@ class GraphOperationsTest {
   }
 
   @Test
-  void addVertex() {
+  void graphShouldHaveVertices() {
     Graph<Integer> g = new Graph<>();
     g.addVertex(1);
     g.addVertex(2);
@@ -41,14 +41,24 @@ class GraphOperationsTest {
   }
 
   @Test
-  void addEdge() {
+  void graphShouldHaveEdges() {
     Graph<String> g = getGraph();
     assertEquals(5, g.getVertexCount());
     assertEquals(8, g.getEdgeCount());
   }
 
   @Test
-  void removeEdge() {
+  void graphShouldHaveUniqueEdges() {
+    Graph<String> g = new Graph<>();
+    g.addEdge("A", "B");
+    g.addEdge("A", "B");
+    System.out.println(g.toString());
+    assertEquals(2, g.getVertexCount());
+    assertEquals(2, g.getEdgeCount());
+  }
+
+  @Test
+  void graphShouldHaveEdgeRemoved() {
     Graph<String> g = getGraph();
 
     g.removeEdge("A", "B");
@@ -58,7 +68,7 @@ class GraphOperationsTest {
   }
 
   @Test
-  void removeVertex() {
+  void graphShouldHaveVertexRemoved() {
     Graph<String> g = getGraph();
 
     g.removeVertex("B");

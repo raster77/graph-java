@@ -109,7 +109,7 @@ class AlgorithmTest {
   }
 
   @Test
-  void dfs() {
+  void dfsTest() {
     Graph<String> g = getGraph();
 
     List<String> l = Dfs.execute(g, "A");
@@ -119,7 +119,7 @@ class AlgorithmTest {
   }
 
   @Test
-  void bfs() {
+  void bfsTest() {
     Graph<String> g = getGraph();
 
     List<String> l = Bfs.execute(g, "A");
@@ -129,7 +129,7 @@ class AlgorithmTest {
   }
 
   @Test
-  void bfsPath() {
+  void bfsPathTest() {
     Graph<Integer> g = getIntegerGraph();
     List<Integer> res = BfsPath.execute(g, 7, 38);
     List<Integer> assertList = Arrays.asList(new Integer[] {7, 1, 13, 49, 38});
