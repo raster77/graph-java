@@ -9,6 +9,14 @@ import fr.tdi.graph.Graph;
 
 public class Bfs {
 
+  /**
+   * Performs a breadth first search
+   *
+   * @param <T>
+   * @param graph
+   * @param vertex
+   * @return List of <T>
+   */
   public static <T> List<T> execute(Graph<T> graph, T vertex) {
 
     List<T> res = new ArrayList<>();
@@ -24,8 +32,6 @@ public class Bfs {
           queue.add(e);
         }
       }
-
-      // queue.add(vertex);
 
       while (!queue.isEmpty()) {
 

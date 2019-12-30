@@ -10,6 +10,14 @@ import fr.tdi.graph.Graph;
 
 public class Dfs {
 
+  /**
+   * Performs a depth first search
+   *
+   * @param <T>
+   * @param graph
+   * @param vertex
+   * @return List of <T>
+   */
   public static <T> List<T> execute(Graph<T> graph, T vertex) {
     List<T> res = new ArrayList<>();
     if (graph.exists(vertex)) {
