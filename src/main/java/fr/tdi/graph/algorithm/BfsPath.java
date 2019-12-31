@@ -23,7 +23,7 @@ public class BfsPath {
    */
   public static <T> List<T> execute(Graph<T> graph, T vertexA, T vertexB) {
     List<T> res = new ArrayList<>();
-    if (graph.exists(vertexA)) {
+    if (graph.exists(vertexA) && graph.exists(vertexB)) {
       LinkedList<T> queue = new LinkedList<>();
       HashMap<T, Integer> visitedMap = new HashMap<>();
       HashMap<T, T> pathMap = new HashMap<>();

@@ -52,7 +52,6 @@ class GraphOperationsTest {
     Graph<String> g = new Graph<>();
     g.addEdge("A", "B");
     g.addEdge("A", "B");
-    System.out.println(g.toString());
     assertEquals(2, g.getVertexCount());
     assertEquals(2, g.getEdgeCount());
   }

@@ -27,8 +27,17 @@ public class Pair<T, U> {
    *
    * @return T
    */
-  T getFirst() {
+  public T getFirst() {
     return first;
+  }
+
+  /**
+   * Set value of first element
+   *
+   * @param value
+   */
+  public void setFirst(T value) {
+    first = value;
   }
 
   /**
@@ -36,7 +45,16 @@ public class Pair<T, U> {
    *
    * @return U
    */
-  U getSecond() {
+  public U getSecond() {
     return second;
+  }
+
+  /**
+   * Set value of second element
+   *
+   * @param value
+   */
+  public void setSecond(U value) {
+    second = value;
   }
 }

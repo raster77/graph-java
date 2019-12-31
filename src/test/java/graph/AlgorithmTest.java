@@ -11,6 +11,7 @@ import fr.tdi.graph.Graph;
 import fr.tdi.graph.algorithm.Bfs;
 import fr.tdi.graph.algorithm.BfsPath;
 import fr.tdi.graph.algorithm.Dfs;
+import fr.tdi.graph.algorithm.DijkstraPath;
 
 class AlgorithmTest {
 
@@ -133,6 +134,29 @@ class AlgorithmTest {
     Graph<Integer> g = getIntegerGraph();
     List<Integer> res = BfsPath.execute(g, 7, 38);
     List<Integer> assertList = Arrays.asList(new Integer[] {7, 1, 13, 49, 38});
+    assertEquals(assertList, res);
+  }
+
+  @Test
+  void testDijkstra() {
+    Graph<Integer> g = new Graph<>();
+    g.addEdge(0, 1, 4.f);
+    g.addEdge(0, 7, 8.f);
+    g.addEdge(1, 2, 8.f);
+    g.addEdge(1, 7, 11.f);
+    g.addEdge(2, 3, 7.f);
+    g.addEdge(2, 8, 2.f);
+    g.addEdge(2, 5, 4.f);
+    g.addEdge(3, 4, 9.f);
+    g.addEdge(3, 5, 14.f);
+    g.addEdge(4, 5, 10.f);
+    g.addEdge(5, 6, 2.f);
+    g.addEdge(6, 7, 1.f);
+    g.addEdge(6, 8, 6.f);
+    g.addEdge(7, 8, 7.f);
+
+    List<Integer> res = DijkstraPath.execute(g, 8, 4);
+    List<Integer> assertList = Arrays.asList(new Integer[] {8, 2, 5, 4});
     assertEquals(assertList, res);
   }
 }
