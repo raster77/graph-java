@@ -19,6 +19,27 @@ class GraphOperationsTest {
   }
 
   @Test
+  void directionalGraphTest() {
+    Graph<String> g = new Graph<String>(GraphType.Directed);
+    g.addEdge("A", "B");
+    g.addEdge("A", "D");
+    g.addEdge("A", "C");
+    g.addEdge("B", "E");
+
+    assertEquals(5, g.getVertexCount());
+    assertEquals(4, g.getEdgeCount());
+
+    g.removeEdge("B", "E");
+    assertEquals(5, g.getVertexCount());
+    assertEquals(3, g.getEdgeCount());
+
+    g.addEdge("B", "E");
+    g.removeVertex("B");
+    assertEquals(4, g.getVertexCount());
+    assertEquals(3, g.getEdgeCount());
+  }
+
+  @Test
   void graphShouldBeEmpty() {
     Graph<String> g = new Graph<String>(GraphType.Directed);
     g.addEdge("A", "B");
