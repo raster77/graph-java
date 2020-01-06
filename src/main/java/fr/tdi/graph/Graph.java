@@ -92,7 +92,7 @@ public class Graph<T> {
       return adjacentMap.get(vertex).stream().map(e -> e.first).collect(Collectors.toList());
     }
 
-    return new ArrayList<T>();
+    return new ArrayList<T>(0);
   }
 
   /**
@@ -105,9 +105,7 @@ public class Graph<T> {
   public ArrayList<Pair<T, Float>> getEdgesWithWeight(T vertex) {
     if (adjacentMap.containsKey(vertex)) {
       return adjacentMap.get(vertex);
-    }
-
-    return new ArrayList<Pair<T, Float>>();
+    } else return new ArrayList<Pair<T, Float>>();
   }
 
   /**
@@ -188,6 +186,11 @@ public class Graph<T> {
   /** @return number of edges */
   public int getEdgeCount() {
     return edgeCount;
+  }
+
+  /** @return Graph type */
+  public GraphType getGraphType() {
+    return graphType;
   }
 
   /** @return string representation of graph */

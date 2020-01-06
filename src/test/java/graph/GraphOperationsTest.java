@@ -1,5 +1,6 @@
 package graph;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -21,11 +22,20 @@ class GraphOperationsTest {
   @Test
   void directionalGraphTest() {
     Graph<String> g = new Graph<String>(GraphType.Directed);
+
+    assertTrue(g.getEdges("Z").isEmpty());
+    assertTrue(g.getEdgesWithWeight("Z").isEmpty());
+
+    g.addVertex("A");
+    assertTrue(g.getEdges("A").isEmpty());
+    assertTrue(g.getEdgesWithWeight("A").isEmpty());
+
     g.addEdge("A", "B");
     g.addEdge("A", "D");
     g.addEdge("A", "C");
     g.addEdge("B", "E");
 
+    assertEquals(GraphType.Directed, g.getGraphType());
     assertEquals(5, g.getVertexCount());
     assertEquals(4, g.getEdgeCount());
 
@@ -37,6 +47,9 @@ class GraphOperationsTest {
     g.removeVertex("B");
     assertEquals(4, g.getVertexCount());
     assertEquals(3, g.getEdgeCount());
+
+    String assertStr = "A: B D C \n" + "C: \n" + "D: \n" + "E: \n";
+    assertEquals(g.toString(), assertStr);
   }
 
   @Test

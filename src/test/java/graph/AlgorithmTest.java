@@ -1,5 +1,6 @@
 package graph;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
@@ -111,6 +112,10 @@ class AlgorithmTest {
 
   @Test
   void dfsTest() {
+
+    Dfs d = new Dfs();
+    assertTrue(d != null);
+
     Graph<String> g = getGraph();
 
     List<String> l = Dfs.execute(g, "A");
@@ -121,6 +126,10 @@ class AlgorithmTest {
 
   @Test
   void bfsTest() {
+
+    Bfs b = new Bfs();
+    assertTrue(b != null);
+
     Graph<String> g = getGraph();
 
     List<String> l = Bfs.execute(g, "A");
@@ -130,7 +139,17 @@ class AlgorithmTest {
   }
 
   @Test
+  void bfsShouldBeEmpty() {
+    Graph<String> g = getGraph();
+
+    List<String> l = Bfs.execute(g, "Z");
+    assertTrue(l.isEmpty());
+  }
+
+  @Test
   void bfsPathTest() {
+    BfsPath b = new BfsPath();
+    assertTrue(b != null);
     Graph<Integer> g = getIntegerGraph();
     List<Integer> res = BfsPath.execute(g, 7, 38);
     List<Integer> assertList = Arrays.asList(new Integer[] {7, 1, 13, 49, 38});
@@ -138,7 +157,22 @@ class AlgorithmTest {
   }
 
   @Test
+  void bfsPathShouldBeEmpty() {
+    Graph<Integer> g = getIntegerGraph();
+    List<Integer> res = BfsPath.execute(g, 150, 200);
+    assertTrue(res.isEmpty());
+
+    res = BfsPath.execute(g, 7, 200);
+    assertTrue(res.isEmpty());
+
+    res = BfsPath.execute(g, 200, 38);
+    assertTrue(res.isEmpty());
+  }
+
+  @Test
   void testDijkstra() {
+    DijkstraPath d = new DijkstraPath();
+    assertTrue(d != null);
     Graph<Integer> g = new Graph<>();
     g.addEdge(0, 1, 4.f);
     g.addEdge(0, 7, 8.f);
@@ -158,5 +192,33 @@ class AlgorithmTest {
     List<Integer> res = DijkstraPath.execute(g, 8, 4);
     List<Integer> assertList = Arrays.asList(new Integer[] {8, 2, 5, 4});
     assertEquals(assertList, res);
+  }
+
+  @Test
+  void testDijkstraShouldBeEmpty() {
+    Graph<Integer> g = new Graph<>();
+    g.addEdge(0, 1, 4.f);
+    g.addEdge(0, 7, 8.f);
+    g.addEdge(1, 2, 8.f);
+    g.addEdge(1, 7, 11.f);
+    g.addEdge(2, 3, 7.f);
+    g.addEdge(2, 8, 2.f);
+    g.addEdge(2, 5, 4.f);
+    g.addEdge(3, 4, 9.f);
+    g.addEdge(3, 5, 14.f);
+    g.addEdge(4, 5, 10.f);
+    g.addEdge(5, 6, 2.f);
+    g.addEdge(6, 7, 1.f);
+    g.addEdge(6, 8, 6.f);
+    g.addEdge(7, 8, 7.f);
+
+    List<Integer> res = DijkstraPath.execute(g, 80, 40);
+    assertTrue(res.isEmpty());
+
+    res = DijkstraPath.execute(g, 80, 4);
+    assertTrue(res.isEmpty());
+
+    res = DijkstraPath.execute(g, 8, 40);
+    assertTrue(res.isEmpty());
   }
 }
